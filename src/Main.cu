@@ -30,77 +30,20 @@ struct Dataset
 
 int main(int argc, char** argv)
 {
-    //TXTReader* file, * valid;
     PNGReader* file, * valid;
-    //Matrix a(3,2), b(2,3);
-    //Matrix c(3, 3);
-    //double yt = 1.0;
-    //for (int i = 0; i < 2; i++)
-    //    for (int j = 0; j < 3; j++)
-    //    {
-    //        b(i, j) = yt;
-    //        yt++;
-    //    }
-    //for (int i = 0; i < 3; i++)
-    //    for (int j = 0; j < 2; j++)
-    //    {
-    //        a(i, j) = yt;
-    //        yt++;
-    //    }
-    //a.DataTransfer(HostToDevice);
-    //b.DataTransfer(HostToDevice);
-    //cublasHandle_t handle;
-    //cublasCreate(&handle);
-    //double ap = 1.0, be = 0.0;
-    //cublasDgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, b.cols(), a.rows(), a.cols(), &ap, b.GetDevMat(), b.cols(),
-    //    a.GetDevMat(), a.cols(), &be, c.GetDevMat(), b.cols());
-    //c.DataTransfer(DeviceToHost);
-    //c.showMat();
-    //getchar();
-    //Matrix k;
-    //k = Zeros(3, 3);
-    //k.showMat();
-    //Vector* pv = new Vector[5];
-
-    //double **a = new double*[4];
-    //for (int i = 0; i < 4; i++)
-    //    a[i] = new double[5];
-
-    //double *ppppp = new double[20];
-    //for (int i = 0; i < 4; i++)
-    //    for (int j = 0; j < 5; j++)
-    //        a[i][j] = i * 5 + j;
-    //for (int i = 0; i < 4; i++)
-    //    for(int j=0;j<5;j++)
-    //    printf("%f ", a[i][j]);
-    //printf("\n");
-    //int cff = 0;
-    //for (int i = 0; i < 4; i++)
-    //{
-    //    memcpy(&ppppp[cff], a[i], sizeof(double) * 5);
-    //    cff += 5;
-    //}
-    //for (int i = 0; i < 20; i++)
-    //    printf("%f ", ppppp[i]);
-    //printf("\n");
-    //Flatten iou;
-    //iou.BuildLayer(4, 5);
-    //iou.Forward(a, 4, 5);
-    //iou.DisplayOutput();
-    //delete[] ppppp;
     
 
     int trainFile_num, testFile_num;
     std::vector<string> trainfiles, testfiles;
 
 #ifdef linux
-    Listdir(std::string("/home/zl538/test/trainsamples"), ".txt", trainfiles);
-    Listdir(std::string("/home/zl538/test/testsamples"), ".txt", testfiles);
+    Listdir(std::string("./trainsamples"), ".txt", trainfiles);
+    Listdir(std::string("./testsamples"), ".txt", testfiles);
 #else
-     /*Listdir(std::string("D:/mnist_train/mnist_train"), ".png",  trainfiles);
-     Listdir(std::string("D:/mnist_train/mnist_test"), ".png", testfiles);*/
-    Listdir(std::string("D:/pythonProject/fashion_train"), ".png", trainfiles);
-    Listdir(std::string("D:/pythonProject/fashion_test"), ".png", testfiles);
+     /*Listdir(std::string("./mnist_train"), ".png",  trainfiles);
+     Listdir(std::string("./mnist_test"), ".png", testfiles);*/
+    Listdir(std::string("./fashion_train"), ".png", trainfiles);
+    Listdir(std::string("./fashion_test"), ".png", testfiles);
 #endif
 
 
@@ -287,29 +230,6 @@ int main(int argc, char** argv)
         fprintf(facc, "%f\n", tloss[i]);
     fclose(facc);
 
-    //d2.ExportWeight(&af1);
-    //df.ExportWeight(&af2);
-
-    /*Matrix del1, del2;
-    del1 = af1 - ori1;
-    del2 = af2 - ori2;*/
-
-    
-    //double m1[32][784];
-    //double m2[10][32];
-
-    //for (int i = 0; i < 32; i++)
-    //    for (int j = 0; j < 784; j++)
-    //        m1[i][j] = del1(i, j) * 127.5 + 127.5;
-
-    //for (int i = 0; i < 10; i++)
-    //    for (int j = 0; j < 32; j++)
-    //        m2[i][j] = del2(i, j) * 127.5 + 127.5;
-
-   /* cv::Mat mm(32, 28 * 28, CV_64FC1, m1), mmm(10, 32, CV_64FC1, m2);
-    cv::imwrite("m1.jpg", mm);
-    cv::imwrite("m2.jpg", mmm);*/
-
     //test process
     count = 0;
     accuracy[0] = 0.0;
@@ -329,31 +249,6 @@ int main(int argc, char** argv)
         fprintf(f, "%d ", net.cate_res[i]);
     fclose(f);*/
     memset(net.cate_res, 0, sizeof(int) * 10);
-
-    //Vector gene;
-    //MYTYPE img[28][28];
-
-    /*Vector lab(classnum);
-    lab.ZeroReset();
-    std::normal_distribution<MYTYPE> normal(0.0, 1.0);*/
-    //for (int c = 0; c < 10; c++)
-    //{
-    //    count = 0;
-    //    gene = net.Reverse(one_hot.RowSlice(c));
-    //    gene = gene * 255.0;
-
-    //    for (int i = 0; i < 28; i++)
-    //        for (int j = 0; j < 28; j++)
-    //        {
-    //            img[i][j] = gene[count];
-    //            count++;
-    //        }
-    //    cv::Mat image(28, 28, CV_64FC1, img);
-    //    /*cv::imshow("pic", image);
-    //    cv::waitKey(0);*/
-    //    cv::imwrite("./generate/"+std::to_string(c)+".jpg", image);
-    //}
-
 
     //Destory cuda handle before reset the device
     mc.Destory();
