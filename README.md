@@ -1,5 +1,5 @@
 # CUDA_CNN
-This project builds a CNN from scratch using C\C++. You need CUDA and OpenCV to run this project. If you find any bugs, please tell me. Thank you!
+This project builds a CNN from scratch using C/C++. You need CUDA and OpenCV to run this project. If you find any bugs, please tell me. Thank you!
 
 2D convolution layer, 2D max pooling layer, flatten layer, and fully connected layer (dense layer) are supported.
 
