@@ -47,11 +47,6 @@ void Net::Forward(MYTYPE* _input, const int size)
     while (now_layer < layers.end())
     {
         preType = pre_layer->type;
-        //if ((*now_layer).type == RANIVER)
-        //{
-        //    now_layer++;
-        //    continue;
-        //}
 
         switch (now_layer->type)
         {
