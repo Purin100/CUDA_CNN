@@ -134,4 +134,3 @@ private:
 };
 
 static mat_calc mc;
-//namespace mc = mat_calc;
