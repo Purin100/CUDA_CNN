@@ -143,11 +143,6 @@ int main(int argc, char** argv)
     std::mt19937_64 mt199(dddd());
     std::shuffle(trainset.begin(), trainset.end(), mt199);
 
-    //Matrix ori1, ori2;
-    //Matrix af1, af2;
-
-    //d2.ExportWeight(&ori1);
-    //df.ExportWeight(&ori2);
     //main loop
     while (now_epoch < epoch)
     {
