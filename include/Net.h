@@ -405,6 +405,5 @@ private:
     int rest_sample = 0;
     Vector input;
     //MYTYPE* lastLayer_output = nullptr;
-    bool use_raniver = false;
     bool update = false;
 };
