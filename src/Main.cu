@@ -36,9 +36,10 @@ int main(int argc, char** argv)
     int trainFile_num, testFile_num;
     std::vector<string> trainfiles, testfiles;
 
+//set your dataset path
 #ifdef linux
-    Listdir(std::string("./trainsamples"), ".txt", trainfiles);
-    Listdir(std::string("./testsamples"), ".txt", testfiles);
+    Listdir(std::string("./trainsamples"), ".png", trainfiles);
+    Listdir(std::string("./testsamples"), ".png", testfiles);
 #else
      /*Listdir(std::string("./mnist_train"), ".png",  trainfiles);
      Listdir(std::string("./mnist_test"), ".png", testfiles);*/
