@@ -152,7 +152,6 @@ struct Net_LayerInfo
             this->num = _n.num;
             this->type = _n.type;
             this->order = _n.order;
-            this->isRaniverBegin = _n.isRaniverBegin;
         }
         return *this;
     }
@@ -161,23 +160,6 @@ struct Net_LayerInfo
     int num = 0;
     LayerType type = UNKNOWN;
     int order = 0;
-    bool isRaniverBegin = false;
-};
-
-struct Raniver_Info
-{
-    Raniver_Info(void* start_layer, void* end_layer)
-    {
-        start.layer = start_layer;
-        end.layer = end_layer;
-    }
-    Raniver_Info(Net_LayerInfo& start_layer, Net_LayerInfo& end_layer)
-    {
-        start = start_layer;
-        end = end_layer;
-    }
-    const int num = 1;
-    Net_LayerInfo start, end;
 };
 
 struct FlattenInfo
