@@ -2,22 +2,12 @@
 
 Flatten::Flatten()
 {
-    //output = nullptr;
     size = 0;
 }
 
 Flatten::~Flatten()
 {
-    // if(output)
-    // {
-    //     delete[] output;
-    //     output = nullptr;
-    // }
-    /*if (loss)
-    {
-        delete[] loss;
-        loss = nullptr;
-    }*/
+
 }
 
 bool Flatten::BuildLayer(const int input_row, const int input_col)
@@ -79,11 +69,6 @@ void Flatten::Forward(MYTYPE** _input, int row, int col)
     {
         output.Realloc(size);
     }
-
-   /* if (loss.empty())
-        loss = Vector(size);*/
-    //if (loss.size() != size)
-        //loss.Realloc(size);
 
     for (int i = 0; i < row; i++)
         for (int j = 0; j < col; j++)
@@ -177,7 +162,6 @@ void Flatten::Backward(Conv2D* pre_layer)
     }
 
     loss.DataTransfer(DeviceToHost);
-    //loss.showVector();
     memcpy(pre_layer->loss.GetMat(), loss.GetVec(), sizeof(MYTYPE) * loss.size());
     cudaMemcpy(pre_layer->loss.GetDevMat(), loss.GetDevVec(), sizeof(MYTYPE) * loss.size(), cudaMemcpyDeviceToDevice);
 }
@@ -191,10 +175,8 @@ void Flatten::Backward(pMaxp pre_layer)
         return;
     }
     loss.DataTransfer(DeviceToHost);
-    //loss.showVector();
     memcpy(pre_layer->loss.GetMat(), loss.GetVec(), sizeof(MYTYPE) * loss.size());
     cudaMemcpy(pre_layer->loss.GetDevMat(), loss.GetDevVec(), sizeof(MYTYPE) * loss.size(), cudaMemcpyDeviceToDevice);
-    //pre_layer->loss.showMat();
 }
 
 void Flatten::Reverse(Vector reverse_vec)
@@ -205,14 +187,8 @@ void Flatten::Reverse(Vector reverse_vec)
 
 void Flatten::DisplayOutput()
 {
-    //int zeros=0;
     for(int i = 0; i < size; i++)
-    {
         printf("%f ", output[i]);
-        //if(output[i]==0.0f)
-        //    zeros++;
-    }
-    //printf("\nzeros:%d\n",zeros);
 }
 
 void Flatten::Save(const char* dir_name, const char* mode)
