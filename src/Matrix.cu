@@ -115,7 +115,6 @@ Vector operator+(const Vector& vec_a, const Vector& vec_b)
 
 Vector operator-(const Vector& v, const MYTYPE num)
 {
-    // TODO: 在此处插入 return 语句
     Vector t = v;
     mc.VecSubNum(t.dev_data, num, t.element_num);
     cudaMemcpy(t.data, t.dev_data, sizeof(MYTYPE) * t.element_num, cudaMemcpyDeviceToHost);
@@ -190,7 +189,6 @@ Vector operator/(const Vector& vec_a, const Vector& vec_b)
 
 Vector& Vector::operator-=(const Vector& v)
 {
-    // TODO: 在此处插入 return 语句
     assert(this->element_num == v.element_num);
     mc.VecSub(dev_data, v.dev_data, dev_data, element_num);
     cudaMemcpy(data, dev_data, element_num * sizeof(MYTYPE), cudaMemcpyDeviceToHost);
@@ -199,7 +197,6 @@ Vector& Vector::operator-=(const Vector& v)
 
 Vector& Vector::operator-=(const MYTYPE num)
 {
-    // TODO: 在此处插入 return 语句
     mc.VecSubNum(dev_data, num, element_num);
     cudaMemcpy(data, dev_data, element_num * sizeof(MYTYPE), cudaMemcpyDeviceToHost);
     return *this;
@@ -237,7 +234,6 @@ Vector& Vector::operator*=(const MYTYPE num)
 
 Vector& Vector::operator/=(const MYTYPE num)
 {
-    // TODO: 在此处插入 return 语句
     assert(num != 0.0 && this->element_num > 0);
     mc.VecDivNum(dev_data, num, element_num);
     cudaMemcpy(data, dev_data, element_num * sizeof(MYTYPE), cudaMemcpyDeviceToHost);
@@ -379,7 +375,6 @@ Matrix& Matrix::operator+=(const MYTYPE num)
 
 Matrix& Matrix::operator*=(const MYTYPE num)
 {
-    // TODO: 在此处插入 return 语句
     assert(this->element_num > 0);
     mc.MatrixMultNumber(dev_data, num, row, col);
     cudaMemcpy(data, dev_data, sizeof(MYTYPE) * row * col, cudaMemcpyDeviceToHost);
@@ -388,7 +383,6 @@ Matrix& Matrix::operator*=(const MYTYPE num)
 
 Matrix& Matrix::operator/=(const MYTYPE num)
 {
-    // TODO: 在此处插入 return 语句
     assert(num != 0);
     mc.MatrixDivNumber(dev_data, num, row, col);
     cudaMemcpy(data, dev_data, sizeof(MYTYPE) * row * col, cudaMemcpyDeviceToHost);
@@ -475,7 +469,6 @@ void Matrix::EleDiv(const Matrix& mat)
 
 Matrix& Matrix::msqrt()
 {
-    // TODO: 在此处插入 return 语句
     mc.MatSqrt(dev_data, row, col);
     cudaMemcpy(data, dev_data, sizeof(MYTYPE) * element_num, cudaMemcpyDeviceToHost);
     return *this;
