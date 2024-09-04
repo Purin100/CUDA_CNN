@@ -19,7 +19,6 @@ e.g. use cublasDgemm to replace cublasSgemm
 #include "utils.h"
 
 class mat_calc
-//namespace mat_calc
 {
 public:
     mat_calc();
