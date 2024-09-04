@@ -345,7 +345,7 @@ void Listdir(std::string _dir, const char* ext, std::vector<string>& result, boo
         printf("ERROR: Invalid argument _dir (null).\n");
         return;
     }
-    if (_access(_dir.c_str(), 0) == -1)//用于判断目录是否存在。如果_access不可用，尝试用access代替
+    if (_access(_dir.c_str(), 0) == -1)//see whether directory _dir exists. If _access() is not avaiable, try to replace it with access(_dir.c_str(), 0)
     {
         printf("ERROR: Input directory %s does not exsist\n", _dir.c_str());
         return;
