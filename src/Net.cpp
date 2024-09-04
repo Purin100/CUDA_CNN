@@ -427,7 +427,7 @@ bool Net::Eval(int label, Vector onehot_label)
 
 void Net::Save(std::string _dir)
 {
-//create floders for saving
+//create folders for saving
 #if defined(_WIN32) || defined(_WIN64)
     if (_access(_dir.c_str(), 0) != 0)
         if (_mkdir(_dir.c_str()) != 0)
