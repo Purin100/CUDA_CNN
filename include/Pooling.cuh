@@ -12,8 +12,6 @@
 #include "utils.h"
 #include "Matrix.cuh"
 
-
-
 struct Position
 {
     Position() { x = -1, y = -1; };
@@ -41,8 +39,7 @@ class Maxpooling
 public:
     Maxpooling();
     ~Maxpooling();
-    //if useMinpool sets true, the pooling layer will filter max(positive) and min(negative) values for inputs seperately
-    //otherwise pooling layer will only filter values larger than zero.
+
     bool BuildLayer(int input_units,
         int input_rows, int input_cols, int input_channels,
         int kernel_rows, int kernel_cols,
