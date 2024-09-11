@@ -309,12 +309,6 @@ __global__ void backward_maxpool_layer_kernel(int n, int in_h, int in_w, int in_
 
 void Maxpooling::Backward(Matrix& pre_layer_loss)
 {
-    loss(0, 0) = 1, loss(0, 1) = 6, loss(0, 2) = 7;
-    loss(1, 0) = 9, loss(1, 1) = -5, loss(1, 2) = 44;
-    loss(2, 0) = -77, loss(2, 1) = 2, loss(2, 2) = -10;
-    loss.DataTransfer(HostToDevice);
-
-
     int n = input_cols * input_rows * units;
 
     UINT k = (n - 1) / BLOCK + 1;
