@@ -289,9 +289,6 @@ public:
             {
             case CONV2D:
                 p = reinterpret_cast<Conv2D*>(layers.back().layer);
-                //if (!reinterpret_cast<Conv2D*>(layer)->BuilderLayer(p->GetOutputRow(), p->GetOutputCol(), kernel_rows, kernel_cols,
-                //    /*stride_rows, stride_cols, p->GetUnits(), node_num, padding_mode, activation))*/
-                //    stride_rows, stride_cols, 1, node_num, padding_mode, activation))
                 if (!reinterpret_cast<Conv2D*>(layer)->BuilderLayer(p->OutR(), p->OutC(), kernel_rows, kernel_cols,
                     stride_rows, stride_cols, p->GetUnits(), node_num, p->GetUnits(), padding_mode, activation))
                 {
