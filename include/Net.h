@@ -13,7 +13,7 @@ This file defines Net class which is the basic framework for the neural network 
 #include <vector>
 #include <thread>
 
-//The two #if are used for saving paraments in the network
+//The two #if are used for saving parameters in the network
 #if defined(_WIN32) || defined(_WIN64)
 #include <direct.h>
 #include <io.h>
