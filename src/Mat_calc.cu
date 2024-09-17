@@ -329,6 +329,7 @@ void mat_calc::MatrixMultNumber(MYTYPE* mat, MYTYPE number, int row, int col)
 
 void mat_calc::MatrixDivNumber(MYTYPE* mat, MYTYPE num, int row, int col)
 {
+    num = (MYTYPE)1.0 / num;
     cublasSscal(handle, row * col, &num, mat, 1);
     //cudaDeviceSynchronize();
 }
