@@ -2,7 +2,7 @@
 This file defined mat_calc class for matrix and vector calculation using cublas library.
 Please ensure all the pointers send to functions in this class are pointers on the device(graph card or GPU)
 
-All the functions in this file are based on "float" data type, and may have problems if you send a float type varible.
+All the functions in this file are based on "float" data type, and may have problems if you send a double type varible.
 Because I called cublasS... functions for calculation.
 Use cublasD... to replace those CUDA functions if you want to use double type.
 e.g. use cublasDgemm to replace cublasSgemm
